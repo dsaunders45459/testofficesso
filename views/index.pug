@@ -3,3 +3,9 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  div
+    div #{test}
+    label(for='ssoToken') SSO Token:
+    input.ssoToken(type='text')
+  div
+    button(type='button') Get SSO Token
