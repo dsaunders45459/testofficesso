@@ -6,6 +6,7 @@ block content
   div
     div #{test}
     label(for='ssoToken') SSO Token:
-    input.ssoToken(type='text')
+    input#ssoToken(type='text')
   div
-    button(type='button') Get SSO Token
+    button#getToken(type='button') Get SSO Token
+    button#forceConsent(type='button') Force Consent
