@@ -22,7 +22,7 @@ router.get('/', async function(req, res, next) {
     grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
     assertion: jwt,
     requested_token_use: 'on_behalf_of',
-    scope: ['User.Read', 'profile', 'openid', 'Files.Read', 'Files.Read.All'].join(' ')
+    scope: ['Files.Read'].join(' ')
   };
 
   const stsDomain = 'https://login.microsoftonline.com';
