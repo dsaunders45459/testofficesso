@@ -33,9 +33,30 @@ function forceConsent() {
     });
 }
 
-Office.onReady((info) => {
-    $(document).ready(() => {
+function getGraphToken() {
+    $.ajax({type: "GET", 
+		url: "http://localhost:3000/auth",
+        headers: {"Authorization": "Bearer " + $('#ssoToken').val()},
+        cache: false
+    }).then(function (response) {
+        $("#graphToken").val(JSON.stringify(response));
+    });
+}
+
+function makeGraphApiCall() {
+    $.ajax({type: "GET", 
+        url: "http://localhost:3000/auth/getuserdata",
+        headers: {"access_token":  JSON.parse($("#graphToken").val()).access_token},
+        cache: false
+    }).then(function (response) {
+        $("#graphApiCall").val(JSON.stringify(response));
+    });
+}
+Office.onReady(function(info) {
+    $(document).ready(function() {
         $('#getToken').click(getSSOToken);
         $('#forceConsent').click(forceConsent);
+        $('#getGraphToken').click(getGraphToken);
+        $('#makeGraphApiCall').click(makeGraphApiCall);
     });
 });

@@ -22,7 +22,7 @@ router.get('/', async function(req, res, next) {
     grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
     assertion: jwt,
     requested_token_use: 'on_behalf_of',
-    scope: ['Files.Read.All'].join(' ')
+    scope: ['User.Read', 'profile', 'openid', 'Files.Read', 'Files.Read.All'].join(' ')
   };
 
   const stsDomain = 'https://login.microsoftonline.com';
@@ -42,4 +42,17 @@ router.get('/', async function(req, res, next) {
   res.send(json);
 });
 
+router.get('/getuserdata', async function(req, res, next) {
+  const authorization = req.get('access_token');
+
+  const tokenResponse = await fetch(`https://graph.microsoft.com/v1.0/me/drive/recent`, {
+    method: 'GET',
+    headers: {
+      "Authorization": `Bearer ${authorization}`
+    }
+  });
+  const json = await tokenResponse.json();
+  
+  res.send(json);
+});
 module.exports = router;

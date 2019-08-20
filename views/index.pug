@@ -6,7 +6,17 @@ block content
   div
     div #{test}
     label(for='ssoToken') SSO Token:
-    input#ssoToken(type='text')
+    textarea#ssoToken
   div
     button#getToken(type='button') Get SSO Token
     button#forceConsent(type='button') Force Consent
+
+  div
+    label(for='graphToken') Graph Token:
+    textarea#graphToken
+    button#getGraphToken(type='button') Get Graph Token
+
+  div
+    label(for='graphApiCall') Graph API Call:
+    textarea#graphApiCall
+    button#makeGraphApiCall(type='button') Make Graph API Call
