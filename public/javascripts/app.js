@@ -52,11 +52,18 @@ function makeGraphApiCall() {
         $("#graphApiCall").val(JSON.stringify(response));
     });
 }
+function claimsRequest() {
+    var claimsStr = JSON.parse($("#graphToken").val()).claims;
+    Office.context.auth.getAccessTokenAsync({authChallenge: claimsStr}, function (result) {
+        debugger;
+    });
+}
 Office.onReady(function(info) {
     $(document).ready(function() {
         $('#getToken').click(getSSOToken);
         $('#forceConsent').click(forceConsent);
         $('#getGraphToken').click(getGraphToken);
         $('#makeGraphApiCall').click(makeGraphApiCall);
+        $('#claims').click(claimsRequest);
     });
 });

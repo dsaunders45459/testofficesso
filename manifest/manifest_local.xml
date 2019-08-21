@@ -83,7 +83,7 @@
         <Id>2ad407d8-51e5-4ebf-ac03-1e4d3df6eabc</Id>
         <Resource>api://2ad407d8-51e5-4ebf-ac03-1e4d3df6eabc</Resource>  
         <Scopes>  
-          <Scope>Files.Read</Scope>
+          <Scope>Mail.Read</Scope>
           <Scope>profile</Scope>
         </Scopes>  
     </WebApplicationInfo> 
