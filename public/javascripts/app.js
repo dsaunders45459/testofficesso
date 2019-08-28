@@ -35,7 +35,7 @@ function forceConsent() {
 
 function getGraphToken() {
     $.ajax({type: "GET", 
-		url: "http://localhost:3000/auth",
+		url: "/auth",
         headers: {"Authorization": "Bearer " + $('#ssoToken').val()},
         cache: false
     }).then(function (response) {
@@ -45,7 +45,7 @@ function getGraphToken() {
 
 function makeGraphApiCall() {
     $.ajax({type: "GET", 
-        url: "http://localhost:3000/auth/getuserdata",
+        url: "/auth/getuserdata",
         headers: {"access_token":  JSON.parse($("#graphToken").val()).access_token},
         cache: false
     }).then(function (response) {
