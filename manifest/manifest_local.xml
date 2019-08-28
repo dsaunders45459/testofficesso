@@ -6,8 +6,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Dan's SSO Test Addin File Access"/>
   <Description DefaultValue="A template to get started."/>
-  <IconUrl DefaultValue="https://localhost/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost/assets/icon-80.png"/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
     <AppDomain>contoso.com</AppDomain>
@@ -61,13 +61,13 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://localhost/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://localhost/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://localhost/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
-        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000" />
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!" />
@@ -80,8 +80,8 @@
       </bt:LongStrings>
     </Resources>
     <WebApplicationInfo>  
-        <Id>2ad407d8-51e5-4ebf-ac03-1e4d3df6eabc</Id>
-        <Resource>api://localhost/2ad407d8-51e5-4ebf-ac03-1e4d3df6eabc</Resource>  
+        <Id>814e9edf-df68-40b5-bae2-ced3702b5bc4</Id>
+        <Resource>api://localhost:3000/814e9edf-df68-40b5-bae2-ced3702b5bc4</Resource>  
         <Scopes>  
           <Scope>Mail.Read</Scope>
           <Scope>profile</Scope>
