@@ -1,8 +1,7 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Welcome to #{title}
   div
     div #{test}
     label(for='ssoToken') SSO Token:
@@ -21,3 +20,8 @@ block content
     label(for='graphApiCall') Graph API Call:
     textarea#graphApiCall
     button#makeGraphApiCall(type='button') Make Graph API Call
+
+  div
+    h1 Test Auth JS Libraries
+    button#testHelloJs Test Hello JS
+    button#testAdalJs Test Adal JS
