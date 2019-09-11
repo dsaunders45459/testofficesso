@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
-  <Id>05c2e1c9-3e1d-406e-9a91-e9ac64854143</Id>
+  <Id>05c2e1c9-3e1d-406e-9a91-e9ac64854144</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso0</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
@@ -24,7 +24,7 @@
         <Id>7fe71067-eb19-44ba-88cb-5317982f85d9</Id>
         <Resource>api://localhost:3000/7fe71067-eb19-44ba-88cb-5317982f85d9</Resource>  
         <Scopes>  
-          <Scope>User.Read</Scope>
+          <Scope>Mail.Read</Scope>
           <Scope>profile</Scope>
         </Scopes>  
     </WebApplicationInfo> 

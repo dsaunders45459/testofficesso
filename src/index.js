@@ -1,77 +1,68 @@
 
-// import hello from 'hellojs'
+import hello from 'hellojs'
 import $ from 'jquery'
 
-var /*@type(String)*/ ssoAadInstance = null;
-var /*@type(String)*/ tenantId = null;
-var /*@type(String)*/ clientId = '7fe71067-eb19-44ba-88cb-5317982f85d9';
-var /*@type(String)*/ ssoRedirectUrl = "https://localhost:3000/";
-var /*@type(String)*/ extraParameters = null;
+// var /*@type(String)*/ ssoAadInstance = null;
+// var /*@type(String)*/ tenantId = null;
+// var /*@type(String)*/ clientId = '7fe71067-eb19-44ba-88cb-5317982f85d9';
+// var /*@type(String)*/ ssoRedirectUrl = "https://localhost:3000/";
+// var /*@type(String)*/ extraParameters = null;
 
-var config = {
-    tenant: tenantId,
-    instance: ssoAadInstance,
-    clientId: clientId,
-    redirectUri: ssoRedirectUrl,
-    navigateToLoginRequestUrl: false,
-    loadFrameTimeout: 30000,
-    popUp: true
-};
+// var config = {
+//     tenant: tenantId,
+//     instance: ssoAadInstance,
+//     clientId: clientId,
+//     redirectUri: ssoRedirectUrl,
+//     navigateToLoginRequestUrl: false,
+//     loadFrameTimeout: 30000,
+//     popUp: true
+// };
 
-var authContext = new AuthenticationContext(config);
-if (authContext.isCallback(window.location.hash)) {
-    authContext.handleWindowCallback();
-}
+// var authContext = new AuthenticationContext(config);
+// if (authContext.isCallback(window.location.hash)) {
+//     authContext.handleWindowCallback();
+// }
 
-function getAdalAccessToken() {
-    var resourceId = "api://localhost:3000/7fe71067-eb19-44ba-88cb-5317982f85d9/.default";
-    authContext.acquireTokenPopup(resourceId, null, null,  function (errorDesc, token, error) {
-        debugger;
-    });
-    // authContext.acquireToken(resourceId, function (acquireTokenError, token) {
-    //     debugger;
-    // });
-}
+// function getAdalAccessToken() {
+//     var resourceId = "api://localhost:3000/7fe71067-eb19-44ba-88cb-5317982f85d9/.default";
+//     authContext.acquireTokenPopup(resourceId, null, null,  function (errorDesc, token, error) {
+//         debugger;
+//     });
+//     // authContext.acquireToken(resourceId, function (acquireTokenError, token) {
+//     //     debugger;
+//     // });
+// }
 
 function testAdalJs() {
-    authContext.callback = function (loginError, idToken) {
-        getAdalAccessToken(authContext);
-    }
+    // authContext.callback = function (loginError, idToken) {
+    //     getAdalAccessToken(authContext);
+    // }
 
-    let user = authContext.getCachedUser();
-    if (user) {
-        getAdalAccessToken(authContext);
-    } else {
-        authContext.login();
-    }
+    // let user = authContext.getCachedUser();
+    // if (user) {
+    //     getAdalAccessToken(authContext);
+    // } else {
+    //     authContext.login();
+    // }
 }
 
-// const AD_URL = 'https://login.microsoftonline.com/consumers/oauth2/v2.0/';
-// hello.init({
-//     azureAD: {
-//       oauth: {
-//         version: 2,
-//         auth: AD_URL + '/authorize',
-//         grant: AD_URL + '/token',
-//       },
-//       scope_delim: ' ',
-//     }
-//   });
+const AD_URL = 'https://login.microsoftonline.com/consumers/oauth2/v2.0/';
 
-// hello.init({
-//     azureAD: "7fe71067-eb19-44ba-88cb-5317982f85d9"
-// }, {redirect_uri: "https://localhost:3000/", scope: "openid", display: "none"});
+hello.init({
+    windows: "00000000481710A4"
+}, {redirect_uri: "https://p.sfx.ms/sa.html", scope: "api://localhost:3000/7fe71067-eb19-44ba-88cb-5317982f85d9/.default", display: "popup"});
 async function testHelloJS() {
-    // try
-    // {
-    //     let result = await hello('azureAD').login({prompt: "none"});
-    //     console.log(result.authResponse);
-    // }
-    // catch(ex)
-    // {
-    //     debugger;
-    // }
+    try
+    {
+        let result = await hello('windows').login({prompt: "none", display: "none"});
+        console.log(result.authResponse);
+    }
+    catch(ex)
+    {
+        debugger;
+    }
 }
+
 
 function getSSOToken() {
     Office.context.auth.getAccessTokenAsync(function (result) {
