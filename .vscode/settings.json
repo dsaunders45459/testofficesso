@@ -1,4 +1,0 @@
-{
-    "appService.defaultWebAppToDeploy": "/subscriptions/21edefb9-1e67-4c97-b955-f93ebaf54e4a/resourceGroups/Default-Web-EastUS/providers/Microsoft.Web/sites/TestOfficeSSO",
-    "appService.deploySubpath": ""
-}
