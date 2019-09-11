@@ -2,16 +2,9 @@
 function getSSOToken() {
     Office.context.auth.getAccessTokenAsync(function (result) {
         if (result.status === "succeeded") {
-            // Use this token to call Web API
-            var ssoToken = result.value;
             $('#ssoToken').val(result.value);
         } else {
-            if (result.error.code === 13003) {
-                // SSO is not supported for domain user accounts, only
-                // work or school (Office 365) or Microsoft Account IDs.
-            } else {
-                // Handle error
-            }
+            $('#ssoToken').val(JSON.stringify(result));
         }
     });
 }
@@ -55,7 +48,11 @@ function makeGraphApiCall() {
 function claimsRequest() {
     var claimsStr = JSON.parse($("#graphToken").val()).claims;
     Office.context.auth.getAccessTokenAsync({authChallenge: claimsStr}, function (result) {
-        debugger;
+        if (result.status === "succeeded") {
+            $('#ssoToken').val(result.value);
+        } else {
+            $('#ssoToken').val(JSON.stringify(result));
+        }
     });
 }
 Office.onReady(function(info) {
