@@ -10,6 +10,7 @@
 	<DefaultLocale>en-US</DefaultLocale>
 	<DisplayName DefaultValue="Dan's SSOTest"/>
 	<Description DefaultValue="Test SSO"/>
+	<IconUrl DefaultValue="https://localhost/test.png"/>
 	<HighResolutionIconUrl DefaultValue="https://localhost/test.png"/>
 	<Hosts>
 		<Host Name="Mailbox"/>
