@@ -1,66 +1,16 @@
 
-function getSSOToken() {
-    Office.context.auth.getAccessTokenAsync(function (result) {
-        if (result.status === "succeeded") {
-            $('#ssoToken').val(result.value);
-        } else {
-            $('#ssoToken').val(JSON.stringify(result));
-        }
-    });
-}
 
-function forceConsent() {
-    Office.context.auth.getAccessTokenAsync({forceConsent:true}, function (result) {
-        if (result.status === "succeeded") {
-            // Use this token to call Web API
-            var ssoToken = result.value;
-            $('#ssoToken').val(result.value);
-        } else {
-            if (result.error.code === 13003) {
-                // SSO is not supported for domain user accounts, only
-                // work or school (Office 365) or Microsoft Account IDs.
-            } else {
-                // Handle error
-            }
-        }
+$(document).ready(function() {
+    $("#getToken").click(() => {
+        let iframe = document.createElement("iframe");
+        iframe.src = "http://testdanssoapp2:3000";
+        iframe.width = 800;
+        iframe.height = 500;
+        document.body.appendChild(iframe);
     });
-}
-
-function getGraphToken() {
-    $.ajax({type: "GET", 
-		url: "/auth",
-        headers: {"Authorization": "Bearer " + $('#ssoToken').val()},
-        cache: false
-    }).then(function (response) {
-        $("#graphToken").val(JSON.stringify(response));
-    });
-}
-
-function makeGraphApiCall() {
-    $.ajax({type: "GET", 
-        url: "/auth/getuserdata",
-        headers: {"access_token":  JSON.parse($("#graphToken").val()).access_token},
-        cache: false
-    }).then(function (response) {
-        $("#graphApiCall").val(JSON.stringify(response));
-    });
-}
-function claimsRequest() {
-    var claimsStr = JSON.parse($("#graphToken").val()).claims;
-    Office.context.auth.getAccessTokenAsync({authChallenge: claimsStr}, function (result) {
-        if (result.status === "succeeded") {
-            $('#ssoToken').val(result.value);
-        } else {
-            $('#ssoToken').val(JSON.stringify(result));
-        }
-    });
-}
-Office.onReady(function(info) {
-    $(document).ready(function() {
-        $('#getToken').click(getSSOToken);
-        $('#forceConsent').click(forceConsent);
-        $('#getGraphToken').click(getGraphToken);
-        $('#makeGraphApiCall').click(makeGraphApiCall);
-        $('#claims').click(claimsRequest);
+    $("#forceConsent").click(async () => {
+        let val = await document.hasStorageAccess();
+        document.cookie = "test=1";
+        $("#ssoToken").val(val.toString() + "-" + document.cookie);
     });
 });

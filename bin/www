@@ -6,14 +6,14 @@
 
 var app = require('../app');
 var debug = require('debug')('ssoapp:server');
-var https = require('https');
+var http = require('http');
 var fs = require('fs');
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '443');
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
@@ -21,7 +21,7 @@ app.set('port', port);
  */
 var key = fs.readFileSync('certs/server.key');
 var cert = fs.readFileSync('certs/server.cert');
-var server = https.createServer({key: key, cert: cert}, app);
+var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
